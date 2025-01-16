@@ -1,9 +1,8 @@
 import pyautogui, sys, time, os, shutil
 import requests
-from dotenv import load_dotenv, dotenv_values 
+from dotenv import load_dotenv, dotenv_values
 
-load_dotenv() 
-
+load_dotenv()
 
 MODIFIED_FILES = []
 
