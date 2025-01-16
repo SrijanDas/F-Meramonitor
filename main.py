@@ -39,7 +39,7 @@ SOURCE_PATH = "./images/"
 
 def change_screenshot(file):
     print("Changing screenshot...")
-    url = "https://api.apileague.com/retrieve-random-meme?keywords=rocket"
+    url = "https://api.apileague.com/retrieve-random-meme?keywords=dark&media-type=image"
     api_key = os.getenv('API_KEY')
 
     headers = {
