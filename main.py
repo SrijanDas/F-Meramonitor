@@ -1,5 +1,9 @@
 import pyautogui, sys, time, os, shutil
 import requests
+from dotenv import load_dotenv, dotenv_values 
+
+load_dotenv() 
+
 
 MODIFIED_FILES = []
 
@@ -36,7 +40,7 @@ SOURCE_PATH = "./images/"
 def change_screenshot(file):
     print("Changing screenshot...")
     url = "https://api.apileague.com/retrieve-random-meme?keywords=rocket"
-    api_key = ""
+    api_key = os.getenv('API_KEY')
 
     headers = {
         'x-api-key': api_key
