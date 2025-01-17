@@ -1,0 +1,9 @@
+# Error Codes
+ERROR_CODES = {
+    100: "Source path does not exist",
+    101: "Destination path does not exist",
+    102: "No more source images available",
+    103: "Error during file move",
+    104: "Error during monitoring",
+    105: "Error during mouse activity simulation"
+}

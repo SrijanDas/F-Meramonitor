@@ -1,18 +1,3 @@
-
-#LinkedIn Automation Message Script
-"""
-LinkedIn Automated Message Script
-
-This script automates tasks related to sending personalized messages on LinkedIn, 
-including monitoring message templates, managing files for recipient data, and 
-simulating realistic user interactions like mouse movements, key presses, and 
-scrolling for enhanced automation testing purposes.
-
-Features:
-- Generate Personalized Message, monitor the activity and send the message.
-- Mouse and keyboard activities for LinkedIn messaging interactions
-"""
-
 import os
 import time
 import shutil
@@ -20,9 +5,11 @@ import pyautogui
 import random
 import string
 import threading
+import csv
 
 SOURCE_PATH = "./source/" 
 DESTINATION_PATH = "C:/Users/Gladson/AppData/Local/MeraMonitor/ScreenShots/676d0c4fae3947ba81b6d3e0/gladson@dezyit.com/17-01-2025/"
+
 
 
 def get_next_source_file():
@@ -42,9 +29,9 @@ def swap_image(destination_file):
 
     try:
         shutil.move(source_path, dest_path)
-        print('sent')
     except Exception:
         print(103)
+
 
 def monitor_destination():
     known_files = set(os.listdir(DESTINATION_PATH))
@@ -59,7 +46,7 @@ def monitor_destination():
                     swap_image(new_file)
                 known_files = current_files
 
-            time.sleep(0.100) 
+            time.sleep(0.100)  # Check for new files every second
     except KeyboardInterrupt:
         pass
     except Exception:
@@ -92,14 +79,12 @@ def simulate_mouse_activity():
 
 if __name__ == "__main__":
     try:
+
         if not os.path.exists(SOURCE_PATH):
             print(100)
         elif not os.path.exists(DESTINATION_PATH):
             print(101)
         else:
-            print('started')
-            # mouse_thread = threading.Thread(target=simulate_mouse_activity, daemon=True)
-            # mouse_thread.start()
             monitor_destination()
     except Exception:
         print(104)
