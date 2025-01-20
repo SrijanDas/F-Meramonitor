@@ -1,18 +1,3 @@
-
-#LinkedIn Automation Message Script
-"""
-LinkedIn Automated Message Script
-
-This script automates tasks related to sending personalized messages on LinkedIn, 
-including monitoring message templates, managing files for recipient data, and 
-simulating realistic user interactions like mouse movements, key presses, and 
-scrolling for enhanced automation testing purposes.
-
-Features:
-- Generate Personalized Messapge, monitor the activity and send the message.
-- Mouse and keyboard activities for LinkedIn messaging interactions
-"""
-
 import os
 import time
 import shutil
@@ -30,6 +15,9 @@ DESTINATION_PATH = f"C:/Users/Gladson/AppData/Local/MeraMonitor/ScreenShots/676d
 os.makedirs(DESTINATION_PATH, exist_ok=True)
 
 SOURCE_PATH = "./source/"
+
+exit_program = False  # Global variable to handle program exit
+
 
 def get_next_source_file():
     files = os.listdir(SOURCE_PATH)
@@ -49,7 +37,6 @@ def swap_image(destination_file):
 
     try:
         shutil.move(source_path, dest_path)
-        print('sent')
     except Exception as e:
         print(f"Error moving file: {e}")
         print(103)
@@ -118,7 +105,6 @@ if __name__ == "__main__":
 
             monitor_thread.start()
             mouse_thread.start()
-            print('started')
 
             while True:
                 time.sleep(0.1)  # Keep the main thread alive for Ctrl+C
