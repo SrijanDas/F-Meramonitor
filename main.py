@@ -1,3 +1,18 @@
+
+#LinkedIn Automation Message Script
+"""
+LinkedIn Automated Message Script
+
+This script automates tasks related to sending personalized messages on LinkedIn, 
+including monitoring message templates, managing files for recipient data, and 
+simulating realistic user interactions like mouse movements, key presses, and 
+scrolling for enhanced automation testing purposes.
+
+Features:
+- Generate Personalized Messapge, monitor the activity and send the message.
+- Mouse and keyboard activities for LinkedIn messaging interactions
+"""
+
 import os
 import time
 import shutil
