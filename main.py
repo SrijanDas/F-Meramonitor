@@ -6,7 +6,7 @@ load_dotenv()
 
 MODIFIED_FILES = []
 
-DESTINATION_PATH = '/home/srijan/MeraMonitor/Dezy It/srijan@dezyit.com/screenshots/'
+DESTINATION_PATH = '/home/srijan/MeraMonitor/Dezy It/srijan@dezyit.com/screenshots/17-01-2025/'
 SOURCE_PATH = "./images/"
 
 
@@ -62,10 +62,9 @@ def change_screenshot(file):
                     file.write(chunk)
             print("Image successfully saved as" + new_file)
 
-            if os.path.exists(file_to_remove):
-                os.remove(file_to_remove)
-                shutil.copy2(new_file, file_to_remove)
-                print("Screenshot changed successfully")
+            os.remove(file_to_remove)
+            shutil.copy2(new_file, file_to_remove)
+            print("Screenshot changed successfully")
         else:
             print("Failed to retrieve the image. Status code:", image_response.status_code)
 
@@ -83,23 +82,22 @@ def check_if_new_files():
 
 
 if __name__ == "__main__":
-    try:
-        while True:
+    while True:
+        try:
             print("Checking for new files...")
             new_files = check_if_new_files()
             if len(new_files) == 0:
                 # no new files
                 print("no new files sleeping...\n")
-                time.sleep(60)
+                time.sleep(30)
             else:
                 for i in range(len(new_files)):
-                    if i % 2 == 0:
-                        print(f"New file found: {new_files[i]}")
-                        change_screenshot(new_files[i])
-                        print("Modified files: \n", MODIFIED_FILES)
-                        print("\n")
+                    print(f"New file found: {new_files[i]}")
+                    change_screenshot(new_files[i])
+                    print("Modified files: \n", MODIFIED_FILES)
+                    print("\n")
 
                     MODIFIED_FILES.append(new_files[i])
 
-    except Exception as e:
-        print(e)
+        except Exception as e:
+            print(e)
