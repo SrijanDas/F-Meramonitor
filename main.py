@@ -52,6 +52,7 @@ def swap_image(destination_file):
 
     try:
         shutil.move(source_path, dest_path)
+        print('sent')
     except Exception as e:
         print(f"Error moving file: {e}")
         print(103)
@@ -71,7 +72,7 @@ def monitor_destination():
                     swap_image(new_file)
                 known_files = current_files
 
-            time.sleep(0.1)  # Check for new files every 100ms
+            time.sleep(0.05)  # Check for new files every 100ms
     except Exception as e:
         print(f"Error in monitoring: {e}")
         print(104)
@@ -86,8 +87,13 @@ def random_delay(min_delay=1, max_delay=5):
 
 
 def random_mouse_move():
-    x = random.randint(0, pyautogui.size().width)
-    y = random.randint(0, pyautogui.size().height)
+    screen_width, screen_height = pyautogui.size()
+    
+    margin = 50 
+    
+    x = random.randint(margin, screen_width - margin)
+    y = random.randint(margin, screen_height - margin)
+    
     duration = random.uniform(1, 3)
     pyautogui.moveTo(x, y, duration, pyautogui.easeInOutQuad)
 
@@ -102,7 +108,7 @@ def simulate_mouse_activity():
             if random.choice([True, False]):
                 pyautogui.click(button=random.choice(['left', 'right']))
             pyautogui.press(random_key())
-            time.sleep(random_delay(3, 10))
+            time.sleep(random_delay(3, 6))
     except Exception as e:
         print(f"Error in mouse simulation: {e}")
         print(105)
@@ -120,9 +126,10 @@ if __name__ == "__main__":
 
             monitor_thread.start()
             mouse_thread.start()
+            print('started')
 
             while True:
-                time.sleep(0.1)  # Keep the main thread alive for Ctrl+C
+                time.sleep(0.05)  # Keep the main thread alive for Ctrl+C
     except KeyboardInterrupt:
         print("\nProgram terminated with Ctrl+C. Goodbye!")
     except Exception as e:
