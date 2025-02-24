@@ -100,8 +100,8 @@ def random_mouse_move():
 
 def simulate_mouse_activity():
     global exit_program
-    try:
-        while not exit_program:
+    while not exit_program:
+        try:
             random_mouse_move()
             time.sleep(random_delay(2, 4))
             pyautogui.scroll(random.randint(-10, 10))
@@ -109,9 +109,9 @@ def simulate_mouse_activity():
                 pyautogui.click(button=random.choice(['left', 'right']))
             pyautogui.press(random_key())
             time.sleep(random_delay(3, 6))
-    except Exception as e:
-        print(f"Error in mouse simulation: {e}")
-        print(105)
+        except Exception as e:
+            print(f"Error in mouse simulation: {e}")
+            print(105)
 
 
 if __name__ == "__main__":
